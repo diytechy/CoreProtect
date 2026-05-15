@@ -83,13 +83,18 @@ public class VersionUtils {
 
     public static boolean isPaper() {
         try {
+            Class.forName("io.papermc.paper.ServerBuildInfo");
+            return true;
+        }
+        catch (Exception ignored) {
+        }
+        try {
             Class.forName("com.destroystokyo.paper.PaperConfig");
+            return true;
         }
         catch (Exception e) {
             return false;
         }
-
-        return true;
     }
 
     public static boolean isFolia() {
